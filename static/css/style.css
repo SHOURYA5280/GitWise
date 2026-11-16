@@ -183,3 +183,102 @@ footer {
     }
 
 }
+
+/* Budget Dashboard */
+
+.dashboard {
+    margin-top: 35px;
+}
+
+.dashboard h2 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.budget-overview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.budget-card {
+    padding: 22px;
+    background: #eeedff;
+    border-radius: 10px;
+}
+
+.budget-card h3 {
+    font-size: 14px;
+    color: #626779;
+    margin-bottom: 12px;
+}
+
+.budget-card p {
+    font-size: 23px;
+    font-weight: bold;
+    color: #6254d9;
+}
+
+.gift-heading {
+    margin: 30px 0 18px;
+}
+
+.gift-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.gift-card {
+    padding: 20px;
+    border: 1px solid #e3e4ed;
+    border-radius: 10px;
+    line-height: 1.9;
+}
+
+.gift-card h4 {
+    color: #6254d9;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 500px) {
+
+    .budget-overview,
+    .gift-list {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* Editable Allocations */
+
+.gift-card label {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    margin: 12px 0 7px;
+}
+
+.allocation-input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #dcdfea;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.allocation-input:focus {
+    outline: none;
+    border-color: #6254d9;
+}
+
+.save-allocation-btn {
+    width: 100%;
+    margin-top: 25px;
+}
+
+#allocation-message {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
