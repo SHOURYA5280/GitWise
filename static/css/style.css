@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8f9fc;
+    color: #202433;
+}
+
+
+/* Navbar */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    background: white;
+}
+
+.logo {
+    font-size: 26px;
+    color: #6254d9;
+}
+
+.nav-btn {
+    text-decoration: none;
+    color: #6254d9;
+    font-weight: bold;
+}
+
+
+/* Hero */
+
+.hero {
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    padding: 70px 12%;
+    background: #eeedff;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.tagline {
+    color: #6254d9;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: 54px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #626779;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+
+/* Buttons */
+
+.primary-btn {
+    display: inline-block;
+    background: #6254d9;
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.primary-btn:hover {
+    background: #4e42bd;
+}
+
+
+/* Planner */
+
+.planner-section {
+    max-width: 750px;
+    margin: 70px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-heading h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.section-heading p:last-child {
+    color: #777;
+}
+
+
+/* Form */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 9px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #dcdfea;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #6254d9;
+}
+
+#planner-form button {
+    width: 100%;
+}
+
+#result {
+    margin-top: 25px;
+    line-height: 1.8;
+}
+
+
+/* Footer */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+    background: white;
+}
+
+
+/* Responsive */
+
+@media (max-width: 600px) {
+
+    .hero {
+        padding: 60px 8%;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .planner-section {
+        margin: 35px 15px;
+        padding: 25px 18px;
+    }
+
+}

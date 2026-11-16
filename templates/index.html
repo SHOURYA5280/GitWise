@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GiftWise | Smart Gift Shopping Planner</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <h2 class="logo">GiftWise.</h2>
+
+            <a href="#planner" class="nav-btn">Start Planning</a>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="tagline">SMARTER GIFT SHOPPING</p>
+
+                <h1>Every Gift.<br>One Smart Plan.</h1>
+
+                <p class="hero-description">
+                    Plan your gifts, manage your budget and find better
+                    shopping options without the hassle.
+                </p>
+
+                <a href="#planner" class="primary-btn">
+                    Create Your Plan
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="planner-section" id="planner">
+
+            <div class="section-heading">
+                <p class="tagline">LET'S GET STARTED</p>
+
+                <h2>Create Your Shopping Plan</h2>
+
+                <p>
+                    Tell us about your shopping requirements.
+                </p>
+            </div>
+
+
+            <form id="planner-form">
+
+                <div class="form-group">
+
+                    <label for="budget">Total Budget (₹)</label>
+
+                    <input
+                        type="number"
+                        id="budget"
+                        placeholder="Enter your total budget"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="gifts">Number of Gifts</label>
+
+                    <input
+                        type="number"
+                        id="gifts"
+                        placeholder="How many gifts?"
+                        min="1"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="deadline">Shopping Deadline</label>
+
+                    <input
+                        type="date"
+                        id="deadline"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="primary-btn">
+                    Create Shopping Plan
+                </button>
+
+            </form>
+
+
+            <div id="result"></div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>GiftWise — Plan Smarter. Shop Together.</p>
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+
+</html>
