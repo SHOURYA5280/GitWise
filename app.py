@@ -2,6 +2,7 @@ import math
 from datetime import date
 from flask import Flask, render_template, request, jsonify
 from database import get_connection, initialize_database
+from marketplace.flipkart import search_flipkart_products
 
 app = Flask(__name__)
 
@@ -231,6 +232,24 @@ def update_allocations(plan_id):
 
     finally:
         connection.close()
+    
+@app.route("/search-products", methods=["GET"])
+def search_products():
+
+    query = request.args.get("query", "").strip()
+
+    if not query:
+        return jsonify({
+            "error": "Please enter a product name."
+        }), 400
+
+    products = search_flipkart_products(query)
+
+    return jsonify({
+        "query": query,
+        "source": "Demo data - not live marketplace results",
+        "products": products
+    })
 
 if __name__ == "__main__":
     app.run(debug=True)

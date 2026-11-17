@@ -274,3 +274,69 @@ function displayDashboard(data) {
     });
 
 }
+
+const productSearchForm = document.getElementById("product-search-form");
+const productResults = document.getElementById("product-results");
+
+productSearchForm.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const query = document.getElementById("product-query").value.trim();
+
+    if (!query) {
+        productResults.textContent = "Please enter a product name.";
+        return;
+    }
+
+    productResults.innerHTML = "<p>Searching products...</p>";
+
+    try {
+
+        const response = await fetch(
+            `/search-products?query=${encodeURIComponent(query)}`
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Something went wrong.");
+        }
+
+        if (data.products.length === 0) {
+            productResults.innerHTML = "<p>No matching products found.</p>";
+            return;
+        }
+
+        productResults.innerHTML = `
+            <p class="demo-notice">
+                ${data.source}
+            </p>
+
+            <div class="product-list">
+
+                ${data.products.map(product => `
+                    <div class="product-card">
+
+                        <h3>${product.name}</h3>
+
+                        <p>Price: ₹${product.price.toLocaleString("en-IN")}</p>
+
+                        <p>Marketplace: ${product.marketplace}</p>
+
+                        <p>Availability: ${product.availability}</p>
+
+                    </div>
+                `).join("")}
+
+            </div>
+        `;
+
+    }
+    catch (error) {
+
+        productResults.textContent = error.message;
+
+    }
+
+});
