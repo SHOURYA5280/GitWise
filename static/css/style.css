@@ -346,3 +346,155 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+/* Authentication Section */
+.account-section {
+    padding: 60px 8%;
+    text-align: center;
+    background: #eeedff;
+}
+
+.account-section h2 {
+    color: #202433;
+    margin-bottom: 10px;
+}
+
+.account-section > p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.auth-container form {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.auth-container h3 {
+    color: #6254d9;
+    margin-bottom: 5px;
+}
+
+.auth-container input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.auth-container input:focus {
+    outline: none;
+    border-color: #6254d9;
+}
+
+.auth-container button {
+    width: 100%;
+}
+
+#auth-message {
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+#account-status {
+    margin-top: 20px;
+}
+
+#logged-in-user {
+    margin-bottom: 12px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        gap: 12px;
+    }
+
+    .account-section {
+        padding: 45px 5%;
+    }
+
+    .auth-container form {
+        max-width: 100%;
+    }
+}
+
+.auth-container form[hidden] {
+    display: none;
+}
+
+/* Authentication Toggle */
+.auth-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 5px;
+}
+
+.auth-toggle button {
+    padding: 11px 28px;
+    border: 1px solid #6254d9;
+    border-radius: 7px;
+    background: white;
+    color: #6254d9;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.auth-toggle button:hover {
+    background: #eeedff;
+}
+
+.auth-toggle .primary-btn {
+    background: #6254d9;
+    color: white;
+}
+
+.auth-toggle .primary-btn:hover {
+    background: #4e42bd;
+}
+
+/* Hide inactive authentication forms */
+.auth-container form[hidden] {
+    display: none;
+}
+
+/* Authentication Toggle Fix */
+.auth-toggle {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 5px;
+}
+
+.auth-toggle[hidden] {
+    display: none;
+}
+
+.auth-toggle button {
+    width: 125px;
+    flex: 0 0 125px;
+}

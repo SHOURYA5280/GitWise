@@ -1,3 +1,14 @@
+import {
+    auth
+} from "./firebase.js";
+
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js";
+
 const form = document.getElementById("planner-form");
 const result = document.getElementById("result");
 
@@ -337,6 +348,176 @@ productSearchForm.addEventListener("submit", async function(event) {
 
         productResults.textContent = error.message;
 
+    }
+
+});
+
+// ===============================
+// Firebase Authentication
+// ===============================
+
+const signupForm = document.getElementById("signup-form");
+const loginForm = document.getElementById("login-form");
+
+const authMessage = document.getElementById("auth-message");
+const accountStatus = document.getElementById("account-status");
+const loggedInUser = document.getElementById("logged-in-user");
+
+const logoutBtn = document.getElementById("logout-btn");
+
+
+// Display authentication messages
+function showAuthMessage(message) {
+    authMessage.textContent = message;
+}
+
+
+// Create Account
+signupForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("signup-email").value.trim();
+    const password = document.getElementById("signup-password").value;
+    const confirmPassword = document.getElementById("signup-confirm-password").value;
+
+    if (password !== confirmPassword) {
+        showAuthMessage("Passwords do not match.");
+        return;
+    }
+
+    try {
+        await createUserWithEmailAndPassword(auth, email, password);
+
+        showAuthMessage("Account created successfully!");
+
+        signupForm.reset();
+
+    } catch (error) {
+        if (error.code === "auth/email-already-in-use") {
+            showAuthMessage("This email is already registered.");
+        } else if (error.code === "auth/weak-password") {
+            showAuthMessage("Please choose a stronger password.");
+        } else if (error.code === "auth/invalid-email") {
+            showAuthMessage("Please enter a valid email address.");
+        } else {
+            showAuthMessage("Unable to create account. Please try again.");
+            console.error(error);
+        }
+    }
+});
+
+
+// Log In
+loginForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("login-email").value.trim();
+    const password = document.getElementById("login-password").value;
+
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+
+        showAuthMessage("Logged in successfully!");
+
+        loginForm.reset();
+
+    } catch (error) {
+        if (error.code === "auth/invalid-credential") {
+            showAuthMessage("Incorrect email or password.");
+        } else if (error.code === "auth/too-many-requests") {
+            showAuthMessage("Too many attempts. Please try again later.");
+        } else {
+            showAuthMessage("Unable to log in. Please try again.");
+            console.error(error);
+        }
+    }
+});
+
+
+// Track Login Status
+onAuthStateChanged(auth, function (user) {
+
+    // Authentication Form Switching
+
+const signupBtn = document.getElementById("show-signup-btn");
+const loginBtn = document.getElementById("show-login-btn");
+
+const accountHeading = document.getElementById("account-heading");
+const accountDescription = document.getElementById("account-description");
+
+const authToggle = document.querySelector(".auth-toggle");
+
+
+// Show Sign Up Form
+signupBtn.addEventListener("click", function () {
+    signupForm.hidden = false;
+    loginForm.hidden = true;
+
+    signupBtn.classList.add("primary-btn");
+    loginBtn.classList.remove("primary-btn");
+
+    showAuthMessage("");
+});
+
+
+// Show Log In Form
+loginBtn.addEventListener("click", function () {
+    signupForm.hidden = true;
+    loginForm.hidden = false;
+
+    loginBtn.classList.add("primary-btn");
+    signupBtn.classList.remove("primary-btn");
+
+    showAuthMessage("");
+});
+
+
+// Track Login Status
+onAuthStateChanged(auth, function (user) {
+
+    if (user) {
+        signupForm.hidden = true;
+        loginForm.hidden = true;
+
+        authToggle.hidden = true;
+        accountHeading.hidden = true;
+        accountDescription.hidden = true;
+        authMessage.hidden = true;
+
+        accountStatus.hidden = false;
+
+        loggedInUser.textContent = "Logged in as: " + user.email;
+
+    } else {
+        signupForm.hidden = false;
+        loginForm.hidden = true;
+
+        authToggle.hidden = false;
+        accountHeading.hidden = false;
+        accountDescription.hidden = false;
+        authMessage.hidden = false;
+
+        accountStatus.hidden = true;
+
+        signupBtn.classList.add("primary-btn");
+        loginBtn.classList.remove("primary-btn");
+    }
+
+});
+});
+
+
+// Log Out
+logoutBtn.addEventListener("click", async function () {
+
+    try {
+        await signOut(auth);
+
+        showAuthMessage("You have logged out successfully.");
+
+    } catch (error) {
+        showAuthMessage("Unable to log out. Please try again.");
+        console.error(error);
     }
 
 });

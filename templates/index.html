@@ -15,8 +15,10 @@
     <header>
         <nav class="navbar">
             <h2 class="logo">GiftWise.</h2>
-
-            <a href="#planner" class="nav-btn">Start Planning</a>
+            <div class="nav-links">
+                <a href="#planner" class="nav-btn">Start Planning</a>
+                <a href="#account" class="nav-btn">Account</a>
+            </div>
         </nav>
     </header>
 
@@ -44,6 +46,86 @@
 
         </section>
 
+        <section class="account-section" id="account">
+            <h2 id="account-heading">Your GiftWise Account</h2>
+            <p id="account-description">Create an account or log in to access Family Sync.</p>
+
+            <div class="auth-container">
+
+                <div class="auth-toggle">
+                    <button type="button" id="show-signup-btn" class="primary-btn">
+                        Sign Up
+                    </button>
+
+                    <button type="button" id="show-login-btn">
+                        Log In
+                    </button>
+                </div>
+
+                <form id="signup-form" hidden>
+                    <h3>Create Account</h3>
+
+                    <input
+                        type="email"
+                        id="signup-email"
+                        placeholder="Email address"
+                        required
+                    >
+
+                    <input
+                        type="password"
+                        id="signup-password"
+                        placeholder="Password (minimum 6 characters)"
+                        minlength="6"
+                        required
+                    >
+
+                    <input
+                        type="password"
+                        id="signup-confirm-password"
+                        placeholder="Confirm password"
+                        minlength="6"
+                        required
+                    >
+
+                    <button type="submit" class="primary-btn">
+                        Sign Up
+                    </button>
+                </form>
+
+                <form id="login-form">
+                    <h3>Welcome Back</h3>
+
+                    <input
+                        type="email"
+                        id="login-email"
+                        placeholder="Email address"
+                        required
+                    >
+
+                    <input
+                        type="password"
+                        id="login-password"
+                        placeholder="Password"
+                        required
+                    >
+
+                    <button type="submit" class="primary-btn">
+                        Log In
+                    </button>
+                </form>
+
+            </div>
+
+            <p id="auth-message"></p>
+
+            <div id="account-status" hidden>
+                <p id="logged-in-user"></p>
+                <button id="logout-btn" class="primary-btn" type="button">
+                    Log Out
+                </button>
+            </div>
+        </section>
 
         <section class="planner-section" id="planner">
 
@@ -159,7 +241,7 @@
     </footer>
 
 
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script type="module" src="{{ url_for('static', filename='js/app.js') }}"></script>
 
 </body>
 
