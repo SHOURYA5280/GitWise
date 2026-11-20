@@ -7,7 +7,7 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/13.4.0/firebase
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAPjgKCivOvuAK9e5yVjnPy_6vE2n3wB8Y",
+    apiKey: "",
     authDomain: "giftwise-1c679.firebaseapp.com",
     projectId: "giftwise-1c679",
     storageBucket: "giftwise-1c679.firebasestorage.app",
